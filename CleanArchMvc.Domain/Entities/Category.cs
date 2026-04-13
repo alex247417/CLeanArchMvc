@@ -6,10 +6,9 @@ namespace CleanArchMvc.Domain.Entities
     /// <summary>
     /// Entidade de domínio que representa uma Categoria de produtos.
     /// </summary>
-    public sealed class Category
+    public sealed class Category : Entity
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }      
+                public string Name { get; private set; }      
 
         /// <summary>
         /// Instancia uma nova categoria (Utilizado para criações iniciais sem ID).
