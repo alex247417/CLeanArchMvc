@@ -21,6 +21,13 @@ namespace CleanArchMvc.Infra.Data.EntitiesConfiguration
 
             // Nome obrigatório, limitado a 100 caracteres
             builder.Property(t => t.Name).HasMaxLength(100).IsRequired();
+
+            builder.HasData(
+                new Category(1, "Material Escolar"),
+                new Category(2, "Eletrônicos"),
+                new Category(3, "Acessórios")
+                );
+
         }
     }
 }

@@ -34,6 +34,12 @@ namespace CleanArchMvc.Infra.Data.EntitiesConfiguration
             builder.HasOne(e => e.Category)
                    .WithMany(e => e.Products)
                    .HasForeignKey(e => e.CategoryId);
+
+            builder.HasData(
+               new { Id = 1, Name = "Caderno Espiral", Description = "Caderno espiral 100 folhas", Price = 7.45m, Stock = 50, Image = "caderno1.jpg", CategoryId = 1 },
+               new { Id = 2, Name = "Estojo Escolar", Description = "Estojo de plástico cinza", Price = 5.25m, Stock = 30, Image = "estojo1.jpg", CategoryId = 1 },
+               new { Id = 3, Name = "Calculadora Científica", Description = "Calculadora com 240 funções", Price = 15.39m, Stock = 20, Image = "calculadora1.jpg", CategoryId = 2 }
+           );
         }
     }
 }
