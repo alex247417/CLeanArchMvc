@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="container mt-4">
+    <h2>Lista de Produtos</h2>
+    <hr />
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>@item.Stock</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">Nenhum produto encontrado.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
