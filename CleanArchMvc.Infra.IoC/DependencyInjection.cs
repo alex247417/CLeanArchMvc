@@ -22,11 +22,14 @@ namespace CleanArchMvc.Infra.IoC
             services.AddScoped<IProductRepository,  ProductRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+            services.AddAutoMapper(cfg => cfg.AddProfile<DomainToDTOMappingProfile>());
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile<DomainToDTOMappingProfile>();
+                cfg.AddProfile<DTOToCommandMappingProfile>();
+            });
 
-            var myhandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
-
-            services.AddMediatR(myhandlers);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DTOToCommandMappingProfile).Assembly));
 
             return services;
         }
